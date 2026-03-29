@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class AddEntryCard extends StatefulWidget {
   final Function(NotesData) onSave;
-  const AddEntryCard({super.key, required this.onSave});
+  const AddEntryCard({required this.onSave, super.key});
   @override
   State<AddEntryCard> createState() => _AddEntryCard();
 }

@@ -36,7 +36,9 @@ class _NotesScreen extends State<NotesScreen> {
             builder: (context) {
               return AddEntryCard(
                 onSave: (notes) {
-                  listOfContent.add(notes);
+                  setState(() {
+                    listOfContent.add(notes);
+                  });
                 },
               );
             },
