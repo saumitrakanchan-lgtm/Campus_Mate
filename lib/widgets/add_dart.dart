@@ -1,6 +1,7 @@
 import 'package:campusmate/data/notes_content.dart';
 import 'package:campusmate/data/notes_data.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class AddEntryCard extends StatefulWidget {
   final Function(NotesData) onSave;
@@ -59,7 +60,7 @@ class _AddEntryCard extends State<AddEntryCard> {
                       id: '0',
                       title: _titleEditingController.text,
                       content: _contentEditingController.text,
-                      date: "29/4/27",
+                      date: DateFormat("dd/MM/yyyy").format(DateTime.now()),
                     );
                     // setState(() {
                     //   listOfContent.add(notes);
