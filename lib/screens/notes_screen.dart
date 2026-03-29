@@ -1,5 +1,5 @@
 import 'package:campusmate/data/notes_content.dart';
-import 'package:campusmate/widgets/add_card.dart';
+import 'package:campusmate/widgets/add_dart.dart';
 import 'package:campusmate/widgets/notes_card.dart';
 import 'package:flutter/material.dart';
 

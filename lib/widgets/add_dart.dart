@@ -1,4 +1,3 @@
-import 'package:campusmate/data/notes_content.dart';
 import 'package:campusmate/data/notes_data.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -14,13 +13,6 @@ class _AddEntryCard extends State<AddEntryCard> {
   final TextEditingController _titleEditingController = TextEditingController();
   final TextEditingController _contentEditingController =
       TextEditingController();
-
-  // void _printData() {
-  //   print(_titleEditingController.text);
-  //   print(_contentEditingController.text);
-  //   _titleEditingController.clear();
-  //   _contentEditingController.clear();
-  // }
 
   @override
   Widget build(BuildContext context) {
