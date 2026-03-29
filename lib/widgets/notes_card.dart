@@ -1,7 +1,9 @@
+import 'package:campusmate/data/notes_data.dart';
 import 'package:flutter/material.dart';
 
 class NotesCard extends StatelessWidget {
-  const NotesCard({super.key});
+  final NotesData notes;
+  const NotesCard({required this.notes, super.key});
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -13,13 +15,13 @@ class NotesCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Title",
+              notes.title,
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 20),
-            Text("Content", style: TextStyle(fontSize: 15)),
+            Text(notes.content, style: TextStyle(fontSize: 15)),
             SizedBox(height: 20),
-            Text("23-03-2026"),
+            Text(notes.date),
           ],
         ),
       ),

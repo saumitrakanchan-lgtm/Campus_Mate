@@ -1,9 +1,15 @@
-import 'package:campusmate/widgets/add_Card.dart';
+import 'package:campusmate/data/notes_content.dart';
+import 'package:campusmate/widgets/add_card.dart';
 import 'package:campusmate/widgets/notes_card.dart';
 import 'package:flutter/material.dart';
 
-class NotesScreen extends StatelessWidget {
+class NotesScreen extends StatefulWidget {
   const NotesScreen({super.key});
+  @override
+  State<NotesScreen> createState() => _NotesScreen();
+}
+
+class _NotesScreen extends State<NotesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,9 +18,9 @@ class NotesScreen extends StatelessWidget {
         backgroundColor: const Color.fromARGB(31, 54, 47, 47),
       ),
       body: ListView.builder(
-        itemCount: 5,
+        itemCount: listOfContent.length,
         itemBuilder: (context, index) {
-          return const NotesCard();
+          return NotesCard(notes: listOfContent[index]);
         },
       ),
       floatingActionButton: FloatingActionButton(
@@ -28,7 +34,11 @@ class NotesScreen extends StatelessWidget {
               ),
             ),
             builder: (context) {
-              return AddEntryCard();
+              return AddEntryCard(
+                onSave: (notes) {
+                  listOfContent.add(notes);
+                },
+              );
             },
           );
         },

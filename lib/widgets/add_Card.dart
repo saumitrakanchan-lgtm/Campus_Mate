@@ -1,7 +1,10 @@
+import 'package:campusmate/data/notes_content.dart';
+import 'package:campusmate/data/notes_data.dart';
 import 'package:flutter/material.dart';
 
 class AddEntryCard extends StatefulWidget {
-  const AddEntryCard({super.key});
+  final Function(NotesData) onSave;
+  const AddEntryCard({super.key, required this.onSave});
   @override
   State<AddEntryCard> createState() => _AddEntryCard();
 }
@@ -11,13 +14,15 @@ class _AddEntryCard extends State<AddEntryCard> {
   final TextEditingController _contentEditingController =
       TextEditingController();
 
-  void _printData() {
-    print(_titleEditingController.text);
-    print(_contentEditingController.text);
-  }
+  // void _printData() {
+  //   print(_titleEditingController.text);
+  //   print(_contentEditingController.text);
+  //   _titleEditingController.clear();
+  //   _contentEditingController.clear();
+  // }
 
   @override
-  Widget build(BuildContext vontext) {
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
@@ -42,12 +47,26 @@ class _AddEntryCard extends State<AddEntryCard> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 OutlinedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   child: Text("Clear", style: TextStyle(color: Colors.black)),
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.grey),
-                  onPressed: () {},
+                  onPressed: () {
+                    NotesData notes = NotesData(
+                      id: '0',
+                      title: _titleEditingController.text,
+                      content: _contentEditingController.text,
+                      date: "29/4/27",
+                    );
+                    // setState(() {
+                    //   listOfContent.add(notes);
+                    // });
+                    widget.onSave(notes);
+                    Navigator.pop(context);
+                  },
                   child: Text("Save Data"),
                 ),
               ],
