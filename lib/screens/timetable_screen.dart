@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:campusmate/widgets/add_timetable.dart';
+import 'package:campusmate/data/timetable_data.dart';
 
 class TimetableScreen extends StatefulWidget {
   const TimetableScreen({super.key});
@@ -9,8 +10,6 @@ class TimetableScreen extends StatefulWidget {
 }
 
 class _TimetableScreenState extends State<TimetableScreen> {
-  Map<String, List<Map<String, String>>> weeklyTimetable = {};
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +23,7 @@ class _TimetableScreenState extends State<TimetableScreen> {
               builder: (_) => AddTimetableScreen(
                 onSave: (data) {
                   setState(() {
-                    weeklyTimetable = data;
+                    TimetableData.weeklyTimetable = data;
                   });
                 },
               ),
@@ -34,15 +33,15 @@ class _TimetableScreenState extends State<TimetableScreen> {
         child: const Icon(Icons.add),
       ),
 
-      body: weeklyTimetable.isEmpty
+      body: TimetableData.weeklyTimetable.isEmpty
           ? const Center(child: Text("No timetable created"))
           : ListView(
-              children: weeklyTimetable.keys.map((day) {
+              children: TimetableData.weeklyTimetable.keys.map((day) {
                 return Card(
                   margin: const EdgeInsets.all(10),
                   child: ExpansionTile(
                     title: Text(day),
-                    children: weeklyTimetable[day]!
+                    children: TimetableData.weeklyTimetable[day]!
                         .map(
                           (lecture) => ListTile(
                             title: Text(lecture["subject"]!),
